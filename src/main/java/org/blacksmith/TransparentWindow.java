@@ -1,6 +1,5 @@
 package org.blacksmith;
 
-// Java Program to implement the shaped window
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.*;
@@ -9,27 +8,24 @@ import javax.imageio.*;
 
 public class TransparentWindow extends JFrame {
 
-    // main class
-    public static void main(String[] args)
-    {
-        // try block
+    public static void main(String[] args) {
+        GraphicsEnvironment graphics =
+                GraphicsEnvironment.getLocalGraphicsEnvironment();
+        GraphicsDevice device = graphics.getDefaultScreenDevice();
+//         try block
         try {
 
             // create a window
             JWindow w = new JWindow();
 
             // set a transparent  background of the window
-            w.setBackground(Color.BLACK);
-
-            // read the image
-            BufferedImage i = ImageIO.read(new File("/home/blacksmithoffire/coding/MouseLess/MouseLess/src/main/resources/Signature.jpeg"));
+            w.setBackground(new Color(0,0,0,0));
 
             // create a panel
             JPanel p = new JPanel() {
 
                 // paint the panel
-                public void paintComponent(Graphics g)
-                {
+                public void paintComponent(Graphics g) {
                     g.setColor(Color.RED);
                     g.drawLine(100,10,100,1000);
                 }
@@ -39,7 +35,7 @@ public class TransparentWindow extends JFrame {
             w.add(p);
 
             // set the location
-            w.setEx
+
             w.setLocation(0, 0);
 
             // set the size of the window
@@ -47,6 +43,9 @@ public class TransparentWindow extends JFrame {
 
             // set the visibility of the window
             w.setVisible(true);
+
+
+            device.setFullScreenWindow(w);
         }
         // catch any exception
         catch (Exception e) {
