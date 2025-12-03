@@ -17,15 +17,6 @@ public class TransparentWindow {
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
     }
 
-
-    public void keyPressed(KeyEvent e) {
-
-        int key = e.getKeyCode();
-
-        if (key == KeyEvent.VK_LEFT) {
-//            click();
-        }
-    }
     public static void main(String[] args) {
         JFrame frame = new JFrame();
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -34,6 +25,7 @@ public class TransparentWindow {
         frame.setOpacity(0.1f);
         GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
         Rectangle bounds = env.getMaximumWindowBounds();
+        System.out.println(bounds.width);
 
         JPanel p = new JPanel() {
             // paint the panel
