@@ -83,7 +83,21 @@ public class TransparentWindow extends JFrame implements Runnable, KeyListener {
 
     }
 
-    public  void click(int x, int y) throws AWTException, InterruptedException {
+    public void doubleClick(int x, int y) throws AWTException, InterruptedException {
+        Robot bot = new Robot();
+        bot.keyPress(KeyEvent.VK_ALT);
+        bot.keyPress(KeyEvent.VK_TAB);
+        bot.keyRelease(KeyEvent.VK_ALT);
+        bot.keyRelease(KeyEvent.VK_TAB);
+        Thread.sleep(10);
+        bot.mouseMove(x, y);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+    }
+
+    public void click(int x, int y) throws AWTException, InterruptedException {
         Robot bot = new Robot();
         bot.keyPress(KeyEvent.VK_ALT);
         bot.keyPress(KeyEvent.VK_TAB);
@@ -94,7 +108,6 @@ public class TransparentWindow extends JFrame implements Runnable, KeyListener {
         bot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         bot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
     }
-
     @Override
     public void keyPressed(KeyEvent e) {
 
@@ -108,6 +121,13 @@ public class TransparentWindow extends JFrame implements Runnable, KeyListener {
             }
         }
 
+        if (key == KeyEvent.VK_D) {
+            try {
+                doubleClick(originX + 25, originY + 25);
+            } catch (AWTException | InterruptedException ex) {
+                throw new RuntimeException(ex);
+            }
+        }
         if (key == KeyEvent.VK_L) {
             x = 1;
         }
