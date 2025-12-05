@@ -10,7 +10,7 @@ import java.io.*;
 import javax.imageio.*;
 
 
-public class TransparentWindow extends JFrame implements Runnable, KeyListener {
+public class SniperMouse extends JFrame implements Runnable, KeyListener {
     Thread t;
     int x = 0;
     int y = 0;
@@ -18,7 +18,7 @@ public class TransparentWindow extends JFrame implements Runnable, KeyListener {
     int originY = 0;
     boolean vim = true;
 
-    public TransparentWindow() {
+    public SniperMouse() {
 
         // Set frame properties
         setTitle("Animated JFrame");
@@ -166,6 +166,6 @@ public class TransparentWindow extends JFrame implements Runnable, KeyListener {
     public void keyTyped(KeyEvent keyEvent) {}
 
     public static void main(String[] args) {
-        new TransparentWindow();
+        new SniperMouse();
     }
 }
